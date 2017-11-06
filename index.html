@@ -1,24 +1,49 @@
+
 <html>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<button type="button" onclick="foo ()">Search</button>
-<script>
-
-function foo () {
-      global.ajax({
-        url:"request.php", //the page containing php script
-        type: "POST", //request type
-        success:function(result){
-         alert(result);
-       }
-     });
- }    
-    
-</script>
-
-
-
-
-
-
- 
+<head>
+	<link rel="stylesheet" href="index.css">
+	<div id = 'Title'>
+	<h2> PHP Web Dictionary </h2>
+	</div>
+	<script type= "text/javascript">
+		function get (url){
+			var url = ""
+			var httpRequest = new XMLHttpRequest();
+			
+			httpRequest.onreadystatechange = function(){
+				if (this.readyState == 4 && this.status == 200){
+					var response = httpRequest.responseText;
+					alert(response);
+					}
+			};
+			httpRequest.open('GET',url, true);
+			httpRequest.send();
+		}
+		function allDefs(urlb){
+				var httpRequestnew = new XMLHttpRequest();
+				var urlb = httpRequestnew = ""
+				httpRequestnew.onreadystatechange = function(){
+					if (this.readyState == 4 && this.status == 200){
+						var li = document.createElement("li");
+						var ol = document.createElement("ol");
+						var p1 = document.createElement("p1");
+						var p2 = document.createElement("p2");
+						var response2 = document.createTextNode("httpRequestnew");
+						ol.appendChild(li);
+						document.body.appendChild(ol);
+						alert(httpRequestnew.responseText);
+						
+					}
+				};
+				httpRequestnew.open('GET',urlb,true);
+				httpRequestnew.send();
+			}
+		</script>
+		</head>
+	<body>
+		<div id = 'buttons'>
+			<button id = "php" onclick = get('request.php?q=')> Search </button>
+			<button id = "allDefs" onclick = allDef('request.php?q=&all=true')> Get All Defs>
+			</div>
+</head>
 </html>
